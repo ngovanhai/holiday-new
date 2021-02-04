@@ -1,0 +1,12 @@
+.resource-item-header {
+  display: none;
+}
+.resource-list-oders li:nth-child(1) .resource-item-header {
+  display: inline !important;
+}
+.Polaris-ResourceList__EmptySearchResultWrapper {
+  display: none;
+}
+.Polaris-ResourceList__FiltersWrapper {
+  padding: 2rem 0px;
+}

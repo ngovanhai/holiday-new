@@ -1,0 +1,48 @@
+.background{
+    &__remove{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        right: 25px;
+        top: 0;
+        margin-right: 10px;
+        svg{
+            fill:#5f6dc5;
+        }
+        border-radius: 50px;
+        background-color: rgb(231, 231, 231);
+    }
+    &__remove:hover{
+        cursor: pointer;
+        svg{
+            fill: rgb(243, 87, 87);
+        }
+    }
+    &__btnUpload{
+        margin: 10px 10px;
+    }
+    &__preview{
+        margin: 0 auto;
+        display: flex !important;
+        justify-content: center !important;
+        max-width: 100px !important;
+        max-height: 100px;
+    }
+    &__input{
+       
+        width: 100%;
+        padding:60px 0 0 0;
+        height: 20px;
+        overflow: hidden;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #e4e4e4;
+        border-radius: 20px;
+        background-size: 60px 60px;
+    }
+
+}
+button.Polaris-Button.Polaris-Button--fullWidth{
+    margin: 20px 0px;
+}

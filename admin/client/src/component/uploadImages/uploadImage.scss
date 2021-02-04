@@ -1,0 +1,22 @@
+.uploadImage {
+    &__note {
+        color: red;
+        font-size: 13px;
+    }
+    &__image {
+        max-width: 100px;
+    }
+    &__delete {
+        max-width: 25px;
+        min-width: 25px;
+        fill: #5563c1;
+    }
+    &__delete:hover{
+        cursor: pointer;
+    }
+    &__imgPreview{
+        display: inline;
+        max-width: 200px;
+        max-height: 200px;
+    }
+}

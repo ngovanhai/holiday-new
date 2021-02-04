@@ -1,0 +1,75 @@
+body {
+  background-color: #f6f6f7 !important;
+}
+.HomePage {
+  &__tab {
+    margin-top: 100px;
+  }
+  &__header {
+    display: flex;
+  }
+  &__icon {
+    max-width: 20px;
+  }
+  &__namePage {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI,
+      Roboto, Helvetica Neue, sans-serif;
+  }
+  &__menu {
+    margin-left: auto;
+  }
+  &__toogleMenu {
+    i {
+      position: absolute;
+      font-size: 20px !important;
+      top: 45px;
+      right: 10px;
+    }
+  }
+}
+.hihi {
+  animation: show;
+  animation-duration: 1s;
+  transition: all 1s;
+}
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// .Polaris-Tabs__Tab.Polaris-Tabs__Tab--selected .Polaris-Tabs__Title {
+//   border-bottom: var(--p-override-none, 0.3rem) solid #008060;
+// }
+// .Polaris-Tabs__Tab.Polaris-Tabs__Tab--selected .Polaris-Tabs__Title {
+//   border-bottom: var(--p-override-none, 0.3rem) solid #008060;
+// }
+// .Polaris-Tabs__Tab.Polaris-Tabs__Tab--selected .Polaris-Tabs__Title:active {
+//   border-bottom: var(--p-override-none, 0.3rem) solid #008060;
+// }
+.Polaris-Tabs__Wrapper {
+  margin-top: 100px;
+}
+.Polaris-Heading > div > a {
+  color: black;
+}
+.Polaris-Heading > div > a :hover {
+  color: white;
+}
+.Polaris-Heading > div {
+  padding: 5px;
+  border-radius: 5px;
+}
+@media only screen and (max-width: 500px) {
+  .HomePage__menu > .Polaris-Stack {
+    display: block;
+  }
+  .Polaris-Page--fullWidth{
+    padding: 10px;
+  }
+}

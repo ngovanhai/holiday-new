@@ -1,0 +1,64 @@
+.TableList {
+  background-color: white;
+  &__status {
+    svg {
+      fill: rgb(46, 112, 235);
+      width: 15px;
+      height: 15px;
+      margin-top: 5px;
+      margin-right: 5px;
+    }
+    svg:hover {
+      cursor: pointer;
+      fill:blue;
+    }
+   
+    p{
+      position: absolute;
+      margin-top: 25px;
+      display: none;
+    }
+  }
+  &__btnCreate{
+    margin-bottom: 2rem;
+  }
+}
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.ant-btn:active{
+  color: #5d6bc4;
+  border-color: #5d6bc4;
+}
+
+.ant-btn:hover{
+  color: #5d6bc4;
+  border-color: #5d6bc4;
+}
+.Polaris-Tabs__Wrapper{
+  margin-top: 0px;
+}
+.ant-btn:focus{
+  color: #5d6bc4;
+  border-color: #5d6bc4;
+}
+
+.TableList__icon:hover + .TableList__preview{
+  display: block;
+}
+.Polaris-Tabs__Tab.Polaris-Tabs__Tab--selected .Polaris-Tabs__Title {
+  border-bottom: var(--p-override-none, 0.3rem) solid #5c6ac4;
+}
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #5d6bc4;
+  border-color: #5d6bc4;
+}
+.ant-checkbox-indeterminate .ant-checkbox-inner::after{
+  background-color: #5c6ac4;
+}

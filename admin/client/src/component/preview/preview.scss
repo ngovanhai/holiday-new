@@ -1,0 +1,238 @@
+.preview {
+  background-color: white;
+  position: fixed !important;
+  margin-left: 20px;
+  height: 150rem;
+  right: 20px;
+  width: 48%;
+  .Polaris-Card{
+    z-index: 10000;
+  }
+  &__tilte {
+    width: 100vh;
+  }
+  border-left: 2px solid rgba(63, 63, 68, 0.05);
+  border-right: 2px solid rgba(63, 63, 68, 0.05);
+  &__frameTop {
+    position: absolute;
+    background-position: top left;
+    background-repeat: repeat-x;
+    top: 9rem;
+    width: 100%;
+    height: 100px;
+    position: -webkit-sticky;
+    z-index: 100000;
+    animation-duration: 0.3s;
+  }
+  &__frameUpload {
+    background-size: contain;
+  }
+  &__imagesUpload {
+    img {
+      border-radius: 5px;
+    }
+  }
+  &__effect {
+    width: 100%;
+    height: 100%;
+    div {
+      width: 50px;
+      height: 20px;
+      position: absolute;
+      animation-name: fade;
+      animation-duration: 11s;
+      will-change: transform;
+      -webkit-animation-iteration-count: infinite, infinite;
+      -webkit-animation-direction: normal, normal;
+      -webkit-animation-timing-function: linear, ease-in;
+    }
+  }
+  &__image {
+    position: absolute;
+    animation-name: mymove, fade !important;
+    animation-duration: 11s;
+    will-change: transform;
+    -webkit-animation-iteration-count: infinite, infinite;
+    -webkit-animation-direction: normal, normal;
+    -webkit-animation-timing-function: linear, ease-in;
+    z-index: -1;
+  }
+  &__effect {
+    div {
+      i {
+        position: fixed;
+        animation-name: counterclockwiseSpinAndFlip !important;
+        will-change: transform;
+        z-index: -1;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-transform-origin: 50% -100%;
+      }
+    }
+  }
+  &__effect {
+    div {
+      img {
+        position: fixed;
+        animation-name: counterclockwiseSpinAndFlip !important;
+        will-change: transform;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-direction: alternate;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-transform-origin: 50% -100%;
+        z-index: 99;
+      }
+    }
+  }
+
+  &__frameGif {
+    width: 120px !important;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  &__top {
+    animation-name: run !important;
+    animation-duration: 30s !important;
+    animation-iteration-count: infinite;
+    transition: transform 0.1s;
+  }
+  &__bottom {
+    animation-name: runBottom !important;
+    animation-duration: 30s !important;
+    animation-iteration-count: infinite;
+    transition: transform 0.1s;
+  }
+  &__frameBottom {
+    position: fixed;
+    background-position: top left;
+    background-repeat: repeat-x;
+    width: 47.5%;
+    height: 100px;
+    position: -webkit-sticky;
+    bottom: 0px;
+    z-index: 100000;
+    animation-name: test;
+    transition: all 1s;
+    animation-duration: 0.3s;
+  }
+  &__effect {
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes mymove {
+  from {
+    top: 9rem;
+  }
+  to {
+    top: 100vh;
+  }
+}
+@keyframes test {
+  0% {
+    transform: translateY(0vh);
+  }
+  100% {
+    transform: translateY(200vh);
+  }
+}
+@keyframes run {
+  0% {
+    left: calc(0%);
+    transform: scaleX(1);
+  }
+  50% {
+    left: calc(90%);
+    transform: scaleX(1);
+  }
+  51% {
+    transform: scaleX(-1);
+  }
+  100% {
+    left: calc(0%);
+    transform: scaleX(-1);
+  }
+}
+@keyframes runBottom {
+  0% {
+    left: calc(60%);
+    transform: scaleX(1);
+  }
+  50% {
+    left: calc(100%);
+    transform: scaleX(1);
+  }
+  51% {
+    transform: scaleX(-1);
+  }
+  100% {
+    left: calc(60%);
+    transform: scaleX(-1);
+  }
+}
+@keyframes test {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 100px;
+  }
+}
+#holidayBottomFrames {
+  bottom: 0;
+}
+.holidayImageUpload {
+  border-radius: 40%;
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  4% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes drops {
+  100% {
+    transform: translateY(200vh);
+  }
+}
+@keyframes clockwiseSpin {
+  0% {
+    -webkit-transform: rotate(-360deg);
+  }
+  100% {
+    -webkit-transform: rotate(50deg);
+  }
+}
+@keyframes counterclockwiseSpinAndFlip {
+  0% {
+    -webkit-transform: scale(-1, 1) rotate(50deg);
+  }
+  100% {
+    -webkit-transform: scale(-1, 1) rotate(-50deg);
+  }
+}
+canvas {
+  position: absolute;
+  top: 9rem;
+}

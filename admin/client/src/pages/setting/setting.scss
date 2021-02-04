@@ -1,0 +1,10 @@
+.Polaris-Layout__Section + .Polaris-Layout__AnnotatedSection,
+.Polaris-Layout__AnnotatedSection + .Polaris-Layout__AnnotatedSection {
+  border-top: 0 solid var(--p-divider, #dfe3e8);
+}
+.Polaris-Layout > .Polaris-Layout__AnnotatedSection {
+  padding: 0px 2rem;
+}
+.ant-switch-checked {
+  background-color: rgb(92, 106, 196);
+}

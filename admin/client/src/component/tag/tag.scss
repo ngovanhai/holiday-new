@@ -1,0 +1,31 @@
+.tagFilter{
+    ul{
+        list-style-type: none;
+        li{
+            display: inline-block;
+            margin: 0px 10px;
+            border: 1px soid red;
+        }
+    }
+    &__label{
+        cursor: pointer;
+       p{
+           border: 1px solid #dfe3e8;
+           border-radius: 10px;
+           background-color: #dfe3e8;
+           font-size: 14px;
+           color: black;
+           padding: 0px 10px;
+        }
+
+       
+    }
+}
+input[type='checkbox']{
+  display: none;
+}
+:checked + label p {
+    border-color: #ddd;
+    background-color: #3f4eae;
+    color: white;
+  }
