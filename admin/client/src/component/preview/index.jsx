@@ -74,35 +74,35 @@ function Preview(props) {
   //   }, effect_time * 1000);
   //   return () => clearTimeout(myVar);
   // }, [effect_time]);
-  useEffect(() => {
-    if (showFrame) {
-      if (+showFrame === 1) {
-        document.getElementsByClassName(
-          "preview__frameBottom"
-        )[0].style.display = "none";
-        document.getElementsByClassName("preview__frameTop")[0].style.display =
-          "inline";
-      }
-      if (+showFrame === 2) {
-        document.getElementsByClassName("preview__frameTop")[0].style.display =
-          "none";
-        document.getElementsByClassName(
-          "preview__frameBottom"
-        )[0].style.display = "inline";
-      }
-      if (+showFrame === 3) {
-        document.getElementsByClassName(
-          "preview__frameBottom"
-        )[0].style.display = "inline";
-        document.getElementsByClassName("preview__frameTop")[0].style.display =
-          "inline";
-      }
-    }
-  }, [showFrame]);
+  // useEffect(() => {
+  //   if (showFrame) {
+  //     if (+showFrame === 1) {
+  //       document.getElementsByClassName(
+  //         "preview__frameBottom"
+  //       )[0].style.display = "none";
+  //       document.getElementsByClassName("preview__frameTop")[0].style.display =
+  //         "block";
+  //     }
+  //     if (+showFrame === 2) {
+  //       document.getElementsByClassName("preview__frameTop")[0].style.display =
+  //         "none";
+  //       document.getElementsByClassName(
+  //         "preview__frameBottom"
+  //       )[0].style.display = "inline";
+  //     }
+  //     if (+showFrame === 3) {
+  //       document.getElementsByClassName(
+  //         "preview__frameBottom"
+  //       )[0].style.display = "inline";
+  //       document.getElementsByClassName("preview__frameTop")[0].style.display =
+  //         "inline";
+  //     }
+  //   }
+  // }, [showFrame]);
 
-  const arrayIcon = icon.split(",").filter((x) => x !== "");
-  const arrayImage = image.split(",").filter((x) => x !== "");
-  const arrayImagesUpload = imageUpload.split(",").filter((x) => x !== "");
+  // const arrayIcon = icon.split(",").filter((x) => x !== "");
+  // const arrayImage = image.split(",").filter((x) => x !== "");
+  // const arrayImagesUpload = imageUpload.split(",").filter((x) => x !== "");
   function ot_omgholiday_randomInteger(low, high) {
     return low + Math.floor(Math.random() * (high - low));
   }
@@ -117,8 +117,11 @@ function Preview(props) {
   }
 
   let resultIcon = [];
-  if (arrayIcon.length !== 0) {
-    arrayIcon.map((icon) => {
+  if (icon !== "" && Object.keys(icon).length !== 0) {
+    console.log("icon", icon);
+    let arrayIcon = JSON.parse(icon);
+    arrayIcon.map((x) => {
+      console.log(x);
       for (let i = 0; i < number_of_icons; i++) {
         let leftStyle = ot_omgholiday_pixelValue(
           ot_omgholiday_randomInteger(30, window.innerWidth / 2.5)
@@ -139,11 +142,11 @@ function Preview(props) {
               left: leftStyle,
               animationDuration: `${animation_speed}s,${animation_speed}s`,
               animationDelay: `${leafDelay},${leafDelay}`,
-              top: "7rem"
+              top: "7rem",
             }}
           >
             <i
-              className={`fa ${icon}`}
+              className={`fa ${x}`}
               aria-hidden="true"
               style={{
                 top: "-3rem",
@@ -158,82 +161,93 @@ function Preview(props) {
       }
     });
   }
-
   let resultImage = [];
-  arrayImage.map((image) => {
-    for (let i = 0; i < number_of_icons; i++) {
-      let leftStyle = ot_omgholiday_pixelValue(
-        ot_omgholiday_randomInteger(30, window.innerWidth / 2.5)
-      );
-      let spinAnimationName =
-        Math.random() < 0.5 ? "clockwiseSpin" : "counterclockwiseSpinAndFlip";
-      let spinDuration = ot_omgholiday_durationValue(
-        ot_omgholiday_randomFloat(4, 8)
-      );
-      let leafDelay = ot_omgholiday_durationValue(
-        ot_omgholiday_randomFloat(0, 5)
-      );
-      resultImage.push(
-        <div
-          className="preview__image"
-          style={{
-            AnimationName: spinAnimationName,
-            left: leftStyle,
-            animationDuration: `${animation_speed}s,${animation_speed}s`,
-            animationDelay: `${leafDelay},${leafDelay}`,
-            top: "7rem",
-            zIndex: -1
-          }}
-        >
-          <img
-            src={`${rootLinkAssets}${image}.png?v=${version}`}
+  if (image !== "") {
+    console.log(image);
+    let arrImages = JSON.parse(image);
+    arrImages.map((x) => {
+      console.log(number_of_icons);
+      for (let i = 0; i < number_of_icons; i++) {
+        let leftStyle = ot_omgholiday_pixelValue(
+          ot_omgholiday_randomInteger(30, window.innerWidth / 2.5)
+        );
+        let spinAnimationName =
+          Math.random() < 0.5 ? "clockwiseSpin" : "counterclockwiseSpinAndFlip";
+        let spinDuration = ot_omgholiday_durationValue(
+          ot_omgholiday_randomFloat(4, 8)
+        );
+        let leafDelay = ot_omgholiday_durationValue(
+          ot_omgholiday_randomFloat(0, 5)
+        );
+        resultImage.push(
+          <div
+            className="preview__image"
             style={{
-              width: `${image_size}px`,
-              animationName: spinAnimationName,
-              animationDuration: spinDuration,
+              AnimationName: spinAnimationName,
+              left: leftStyle,
+              animationDuration: `${animation_speed}s,${animation_speed}s`,
+              animationDelay: `${leafDelay},${leafDelay}`,
+              top: "7rem",
+              zIndex: -1,
             }}
-          ></img>
-        </div>
-      );
-    }
-  });
+          >
+            <img
+              src={`${rootLinkAssets}${x}.png?v=${version}`}
+              style={{
+                width: `${image_size}px`,
+                animationName: spinAnimationName,
+                animationDuration: spinDuration,
+              }}
+            ></img>
+          </div>
+        );
+      }
+    });
+  }
+
   let resultImageUpload = [];
-  arrayImagesUpload.map((image) => {
-    for (let i = 0; i < number_of_icons; i++) {
-      let leftStyle = ot_omgholiday_pixelValue(
-        ot_omgholiday_randomInteger(30, window.innerWidth / 2.5)
-      );
-      let spinAnimationName =
-        Math.random() < 0.5 ? "clockwiseSpin" : "counterclockwiseSpinAndFlip";
-      let spinDuration = ot_omgholiday_durationValue(
-        ot_omgholiday_randomFloat(4, 8)
-      );
-      let leafDelay = ot_omgholiday_durationValue(
-        ot_omgholiday_randomFloat(0, 5)
-      );
-      resultImageUpload.push(
-        <div
-          className="preview__image preview__imagesUpload"
-          style={{
-            AnimationName: spinAnimationName,
-            left: leftStyle,
-            animationDuration: `${animation_speed}s,${animation_speed}s`,
-            animationDelay: `${leafDelay},${leafDelay}`,
-            top: "10rem",
-          }}
-        >
-          <img
-            src={`${image}.png?v=${version}`}
+  if (imageUpload !== "") {
+    let arrImagesUpload = JSON.parse(imageUpload);
+    arrImagesUpload.map((image) => {
+      console.log(image);
+      console.log(image);
+      for (let i = 0; i < number_of_icons; i++) {
+        let leftStyle = ot_omgholiday_pixelValue(
+          ot_omgholiday_randomInteger(30, window.innerWidth / 2.5)
+        );
+        let spinAnimationName =
+          Math.random() < 0.5 ? "clockwiseSpin" : "counterclockwiseSpinAndFlip";
+        let spinDuration = ot_omgholiday_durationValue(
+          ot_omgholiday_randomFloat(4, 8)
+        );
+        let leafDelay = ot_omgholiday_durationValue(
+          ot_omgholiday_randomFloat(0, 5)
+        );
+        resultImageUpload.push(
+          <div
+            className="preview__image preview__imagesUpload"
             style={{
-              width: `${image_size}px`,
-              animationName: spinAnimationName,
-              animationDuration: spinDuration,
+              AnimationName: spinAnimationName,
+              left: leftStyle,
+              animationDuration: `${animation_speed}s,${animation_speed}s`,
+              animationDelay: `${leafDelay},${leafDelay}`,
+              top: "7rem",
             }}
-          ></img>
-        </div>
-      );
-    }
-  });
+          >
+            <img
+              src={`${image}.png?v=${version}`}
+              style={{
+                width: `${image_size}px`,
+                animationName: spinAnimationName,
+                animationDuration: spinDuration,
+              }}
+            ></img>
+          </div>
+        );
+      }
+    });
+  }
+
   return (
     <div className="preview" style={{ position: "relative" }}>
       <Card title="Preview event" sectioned></Card>
@@ -242,16 +256,17 @@ function Preview(props) {
           frameGif !== ""
             ? "preview__frameTop preview__frameGif preview__top"
             : frame_upload !== ""
-              ? "preview__frameTop preview__frameUpload"
-              : "preview__frameTop"
+            ? "preview__frameTop preview__frameUpload"
+            : "preview__frameTop"
         }
         style={{
-          backgroundImage: `url(${frameUpload !== ""
-            ? frame_upload
-            : frame_sample !== ""
+          backgroundImage: `url(${
+            frameUpload !== ""
+              ? frame_upload
+              : frame_sample !== ""
               ? rootLinkAssets + frame_sample + ".png"
               : frameGif
-            }`,
+          }`,
         }}
       ></div>
       <div
@@ -259,16 +274,17 @@ function Preview(props) {
           frameGif !== ""
             ? "preview__frameBottom preview__frameGif preview__bottom"
             : frame_upload !== ""
-              ? "preview__frameBottom preview__frameUpload"
-              : "preview__frameBottom"
+            ? "preview__frameBottom preview__frameUpload"
+            : "preview__frameBottom"
         }
         style={{
-          backgroundImage: `url(${frameUpload !== ""
-            ? frame_upload
-            : frame_sample !== ""
+          backgroundImage: `url(${
+            frameUpload !== ""
+              ? frame_upload
+              : frame_sample !== ""
               ? rootLinkAssets + frame_sample + `.png?v=${version}`
               : frameGif
-            }`,
+          }`,
           animationName: "runBottom",
         }}
       ></div>

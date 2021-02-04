@@ -171,10 +171,10 @@ function AddEditEvent(props) {
     isAddmode
       ? ""
       : editedEvent.frames === "" && editedEvent.custom_frame === ""
-        ? "3"
-        : editedEvent.frames === "" && editedEvent.frame_gif === ""
-          ? "2"
-          : "1"
+      ? "3"
+      : editedEvent.frames === "" && editedEvent.frame_gif === ""
+      ? "2"
+      : "1"
   );
   const [grid, setGrid] = useState(6);
   const [showPreview, setShowPreview] = useState(true);
@@ -218,25 +218,24 @@ function AddEditEvent(props) {
       }
     }
     if (result !== "") {
-      let arr = result.split(",")
-      arr.splice(arr.length - 1, 1)
-      const chooseImages = JSON.stringify(arr)
-      setSelectImages(chooseImages)
+      let arr = result.split(",");
+      arr.splice(arr.length - 1, 1);
+      const chooseImages = JSON.stringify(arr);
+      setSelectImages(chooseImages);
     } else {
-      setSelectImages([]);
+      setSelectImages("");
     }
     return result;
   };
   const getValueCheckboxIcons = useCallback((result) => {
     if (result.length !== 0) {
-      let arr = result.split(",")
-      arr.splice(arr.length - 1, 1)
-      const chooseIcons = JSON.stringify(arr)
+      let arr = result.split(",");
+      arr.splice(arr.length - 1, 1);
+      const chooseIcons = JSON.stringify(arr);
       setSelectIcon(chooseIcons);
     } else {
-      setSelectIcon([]);
+      setSelectIcon("");
     }
-
   }, []);
   const getValueCheckboxImageUpload = () => {
     let checkbox = document.getElementsByName("imageUploadChoose");
@@ -247,13 +246,13 @@ function AddEditEvent(props) {
       }
     }
     if (result !== "") {
-      let arr = result.split(",")
-      arr.splice(arr.length - 1, 1)
-      const chooseImagesUpload = JSON.stringify(arr)
+      let arr = result.split(",");
+      arr.splice(arr.length - 1, 1);
+      const chooseImagesUpload = JSON.stringify(arr);
       console.log(chooseImagesUpload);
-      setSelectImagesUpload(chooseImagesUpload)
+      setSelectImagesUpload(chooseImagesUpload);
     } else {
-      setSelectImagesUpload([]);
+      setSelectImagesUpload("");
     }
     return result;
   };
@@ -275,7 +274,6 @@ function AddEditEvent(props) {
     setSelectFrameUpload("");
     setSelectFrameGif("");
     setSelectFrame(result);
-    console.log("upload", selectFrameUpload);
     return result;
   };
   const toggleActive = useCallback(
@@ -394,11 +392,11 @@ function AddEditEvent(props) {
         setContentToast("Edit event success");
         toggleActive();
       };
-      // saveEvent().then(() => {
-      //   setTimeout(() => {
-      //     onChangeHome();
-      //   }, 500);
-      // });
+      saveEvent().then(() => {
+        setTimeout(() => {
+          onChangeHome();
+        }, 500);
+      });
     }
   });
 
@@ -536,11 +534,8 @@ function AddEditEvent(props) {
     }
   }, []);
   const hanleColor2 = (t) => {
-
     console.log(t.value);
-
-
-  }
+  };
   return (
     <Frame>
       <div className="AddEditEvent" style={{ display: "flex" }}>
@@ -567,8 +562,8 @@ function AddEditEvent(props) {
               {isAddmode ? (
                 <Heading>Create new event</Heading>
               ) : (
-                  <Heading>{`Edit ${editedEvent.event_name} Event`}</Heading>
-                )}
+                <Heading>{`Edit ${editedEvent.event_name} Event`}</Heading>
+              )}
             </h3>
             <FormLayout>
               <FormLayout.Group>
@@ -605,8 +600,7 @@ function AddEditEvent(props) {
                       value={iconColor}
                       onChange={hanleColor}
                       label="Icons color"
-                    >
-                    </TextField>
+                    ></TextField>
                   </div>
                   <div className="AddEditEvent__Color">
                     <TextField
@@ -617,7 +611,6 @@ function AddEditEvent(props) {
                       id="bgcolor"
                     />
                   </div>
-
                 </div>
                 <Select
                   options={optionsImageSize}
@@ -679,8 +672,8 @@ function AddEditEvent(props) {
                         ? ""
                         : editedEvent.end_date === "0000-00-00 00:00:00" ||
                           editedEvent.end_date === ""
-                          ? ""
-                          : moment(editedEvent.end_date)
+                        ? ""
+                        : moment(editedEvent.end_date)
                     }
                     onChange={handleTimeEnd}
                     showTime
@@ -924,13 +917,13 @@ function AddEditEvent(props) {
             </FormLayout>
           </div>
         </Card>
-        {/* {showPreview === true ? (
+        {showPreview === true ? (
           <Preview
             frameUpload={selectFrameUpload}
             frame_gif={selectframeGif}
             frame={selectFrame}
-            icon={selectIcon}
-            image={selectImages}
+            icon={selectIcon === [] ? "" : selectIcon}
+            image={selectImages === [] ? "" : selectImages}
             number_of_icons={totalIconImage}
             iconColor={iconColor}
             animation_speed={animationSpeed}
@@ -944,7 +937,7 @@ function AddEditEvent(props) {
             imageUpload={selectImagesUpload}
             grid={grid}
           />
-        ) : null} */}
+        ) : null}
       </div>
       {toastMarkup}
     </Frame>
